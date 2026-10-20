@@ -1,0 +1,11 @@
+# Core Numerical & Data Analysis
+numpy>=1.24.0
+pandas>=2.0.0
+matplotlib>=3.7.0
+
+# Testing
+pytest>=7.0.0
+
+# Polar Channel Coding
+# py-polar-codes: Python 3 implementation of 5G Polar Codes (Brendon McBain, MIT License)
+py-polar-codes>=1.2.2
