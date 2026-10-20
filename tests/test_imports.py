@@ -27,6 +27,9 @@ def test_internal_module_imports():
     assert hasattr(src.channel, "BinarySymmetricChannel")
     assert hasattr(src.channel, "WiredChannel")
     assert hasattr(src.channel, "ChannelResult")
+    assert hasattr(src, "EndToEndPipeline")
+    assert hasattr(src, "TransmissionFrameMetadata")
+    assert hasattr(src, "PipelineResult")
 
 
 def test_external_dependency_imports():
