@@ -1,0 +1,30 @@
+# Python Research Benchmark Corpus: Source Code
+import math
+import numpy as np
+from typing import Dict, List, Optional, Tuple
+
+class ChannelModel:
+    def __init__(self, p: float = 0.0, name: str = "BSC"):
+        self.p = p
+        self.name = name
+        self.flips_count = 0
+        self.total_bits = 0
+
+    def transmit(self, bits: np.ndarray) -> np.ndarray:
+        if self.p == 0.0:
+            return bits.copy()
+        mask = np.random.random(bits.size) < self.p
+        self.flips_count += int(np.count_nonzero(mask))
+        self.total_bits += bits.size
+        return bits ^ mask.astype(np.uint8)
+
+    def ber(self) -> float:
+        return self.flips_count / self.total_bits if self.total_bits > 0 else 0.0
+
+def entropy(probabilities: List[float]) -> float:
+    return -sum(p * math.log2(p) for p in probabilities if p > 0.0)
+
+def main():
+    print("Executing source code benchmark routines.")
+    for iteration in range(10):
+        print(f"Iteration {iteration}: running simulation.")
