@@ -16,6 +16,10 @@ def test_internal_module_imports():
     import src.utils.seed
 
     assert src.__version__ == "0.1.0"
+    assert hasattr(src.source_coding, "RansEncoder")
+    assert hasattr(src.source_coding, "RansDecoder")
+    assert hasattr(src.source_coding, "rans_compress")
+    assert hasattr(src.source_coding, "rans_decompress")
 
 
 def test_external_dependency_imports():

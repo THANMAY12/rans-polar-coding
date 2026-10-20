@@ -1,0 +1,120 @@
+Information Theory and Coding Research Project:
+End-to-End Evaluation of rANS Source Coding and Polar Channel Coding for Reliable Text Transmission over a No-Packet-Loss Wired Channel Model.
+
+Range Asymmetric Numeral Systems (rANS) represents a state-of-the-art breakthrough in entropy coding.
+Unlike Huffman coding, which is constrained to assign an integer number of bits to each symbol, rANS operates on continuous frequency intervals, achieving compression rates virtually indistinguishable from the theoretical Shannon entropy bound H(X).
+
+At the same time, rANS avoids the bit-level serialization bottleneck of traditional arithmetic coding by performing state transitions and renormalization directly on native machine words (bytes), achieving orders of magnitude faster throughput.
+
+This pipeline operates on raw UTF-8 text bytes without lossy preprocessing, preserving full Unicode fidelity:
+Mathematical notation: sum_{i=1}^n P(x_i) log_2 (1 / P(x_i)) <= L(C) < H(X) + 1
+Multilingual test: "L'entropie d'une source d'information caractérise son contenu informationnel."
+Non-ASCII characters: Übergrößenträger, déjà-vu, こんにちは, 🚀, 📡, 🔬.
+Information Theory and Coding Research Project:
+End-to-End Evaluation of rANS Source Coding and Polar Channel Coding for Reliable Text Transmission over a No-Packet-Loss Wired Channel Model.
+
+Range Asymmetric Numeral Systems (rANS) represents a state-of-the-art breakthrough in entropy coding.
+Unlike Huffman coding, which is constrained to assign an integer number of bits to each symbol, rANS operates on continuous frequency intervals, achieving compression rates virtually indistinguishable from the theoretical Shannon entropy bound H(X).
+
+At the same time, rANS avoids the bit-level serialization bottleneck of traditional arithmetic coding by performing state transitions and renormalization directly on native machine words (bytes), achieving orders of magnitude faster throughput.
+
+This pipeline operates on raw UTF-8 text bytes without lossy preprocessing, preserving full Unicode fidelity:
+Mathematical notation: sum_{i=1}^n P(x_i) log_2 (1 / P(x_i)) <= L(C) < H(X) + 1
+Multilingual test: "L'entropie d'une source d'information caractérise son contenu informationnel."
+Non-ASCII characters: Übergrößenträger, déjà-vu, こんにちは, 🚀, 📡, 🔬.
+Information Theory and Coding Research Project:
+End-to-End Evaluation of rANS Source Coding and Polar Channel Coding for Reliable Text Transmission over a No-Packet-Loss Wired Channel Model.
+
+Range Asymmetric Numeral Systems (rANS) represents a state-of-the-art breakthrough in entropy coding.
+Unlike Huffman coding, which is constrained to assign an integer number of bits to each symbol, rANS operates on continuous frequency intervals, achieving compression rates virtually indistinguishable from the theoretical Shannon entropy bound H(X).
+
+At the same time, rANS avoids the bit-level serialization bottleneck of traditional arithmetic coding by performing state transitions and renormalization directly on native machine words (bytes), achieving orders of magnitude faster throughput.
+
+This pipeline operates on raw UTF-8 text bytes without lossy preprocessing, preserving full Unicode fidelity:
+Mathematical notation: sum_{i=1}^n P(x_i) log_2 (1 / P(x_i)) <= L(C) < H(X) + 1
+Multilingual test: "L'entropie d'une source d'information caractérise son contenu informationnel."
+Non-ASCII characters: Übergrößenträger, déjà-vu, こんにちは, 🚀, 📡, 🔬.
+Information Theory and Coding Research Project:
+End-to-End Evaluation of rANS Source Coding and Polar Channel Coding for Reliable Text Transmission over a No-Packet-Loss Wired Channel Model.
+
+Range Asymmetric Numeral Systems (rANS) represents a state-of-the-art breakthrough in entropy coding.
+Unlike Huffman coding, which is constrained to assign an integer number of bits to each symbol, rANS operates on continuous frequency intervals, achieving compression rates virtually indistinguishable from the theoretical Shannon entropy bound H(X).
+
+At the same time, rANS avoids the bit-level serialization bottleneck of traditional arithmetic coding by performing state transitions and renormalization directly on native machine words (bytes), achieving orders of magnitude faster throughput.
+
+This pipeline operates on raw UTF-8 text bytes without lossy preprocessing, preserving full Unicode fidelity:
+Mathematical notation: sum_{i=1}^n P(x_i) log_2 (1 / P(x_i)) <= L(C) < H(X) + 1
+Multilingual test: "L'entropie d'une source d'information caractérise son contenu informationnel."
+Non-ASCII characters: Übergrößenträger, déjà-vu, こんにちは, 🚀, 📡, 🔬.
+Information Theory and Coding Research Project:
+End-to-End Evaluation of rANS Source Coding and Polar Channel Coding for Reliable Text Transmission over a No-Packet-Loss Wired Channel Model.
+
+Range Asymmetric Numeral Systems (rANS) represents a state-of-the-art breakthrough in entropy coding.
+Unlike Huffman coding, which is constrained to assign an integer number of bits to each symbol, rANS operates on continuous frequency intervals, achieving compression rates virtually indistinguishable from the theoretical Shannon entropy bound H(X).
+
+At the same time, rANS avoids the bit-level serialization bottleneck of traditional arithmetic coding by performing state transitions and renormalization directly on native machine words (bytes), achieving orders of magnitude faster throughput.
+
+This pipeline operates on raw UTF-8 text bytes without lossy preprocessing, preserving full Unicode fidelity:
+Mathematical notation: sum_{i=1}^n P(x_i) log_2 (1 / P(x_i)) <= L(C) < H(X) + 1
+Multilingual test: "L'entropie d'une source d'information caractérise son contenu informationnel."
+Non-ASCII characters: Übergrößenträger, déjà-vu, こんにちは, 🚀, 📡, 🔬.
+Information Theory and Coding Research Project:
+End-to-End Evaluation of rANS Source Coding and Polar Channel Coding for Reliable Text Transmission over a No-Packet-Loss Wired Channel Model.
+
+Range Asymmetric Numeral Systems (rANS) represents a state-of-the-art breakthrough in entropy coding.
+Unlike Huffman coding, which is constrained to assign an integer number of bits to each symbol, rANS operates on continuous frequency intervals, achieving compression rates virtually indistinguishable from the theoretical Shannon entropy bound H(X).
+
+At the same time, rANS avoids the bit-level serialization bottleneck of traditional arithmetic coding by performing state transitions and renormalization directly on native machine words (bytes), achieving orders of magnitude faster throughput.
+
+This pipeline operates on raw UTF-8 text bytes without lossy preprocessing, preserving full Unicode fidelity:
+Mathematical notation: sum_{i=1}^n P(x_i) log_2 (1 / P(x_i)) <= L(C) < H(X) + 1
+Multilingual test: "L'entropie d'une source d'information caractérise son contenu informationnel."
+Non-ASCII characters: Übergrößenträger, déjà-vu, こんにちは, 🚀, 📡, 🔬.
+Information Theory and Coding Research Project:
+End-to-End Evaluation of rANS Source Coding and Polar Channel Coding for Reliable Text Transmission over a No-Packet-Loss Wired Channel Model.
+
+Range Asymmetric Numeral Systems (rANS) represents a state-of-the-art breakthrough in entropy coding.
+Unlike Huffman coding, which is constrained to assign an integer number of bits to each symbol, rANS operates on continuous frequency intervals, achieving compression rates virtually indistinguishable from the theoretical Shannon entropy bound H(X).
+
+At the same time, rANS avoids the bit-level serialization bottleneck of traditional arithmetic coding by performing state transitions and renormalization directly on native machine words (bytes), achieving orders of magnitude faster throughput.
+
+This pipeline operates on raw UTF-8 text bytes without lossy preprocessing, preserving full Unicode fidelity:
+Mathematical notation: sum_{i=1}^n P(x_i) log_2 (1 / P(x_i)) <= L(C) < H(X) + 1
+Multilingual test: "L'entropie d'une source d'information caractérise son contenu informationnel."
+Non-ASCII characters: Übergrößenträger, déjà-vu, こんにちは, 🚀, 📡, 🔬.
+Information Theory and Coding Research Project:
+End-to-End Evaluation of rANS Source Coding and Polar Channel Coding for Reliable Text Transmission over a No-Packet-Loss Wired Channel Model.
+
+Range Asymmetric Numeral Systems (rANS) represents a state-of-the-art breakthrough in entropy coding.
+Unlike Huffman coding, which is constrained to assign an integer number of bits to each symbol, rANS operates on continuous frequency intervals, achieving compression rates virtually indistinguishable from the theoretical Shannon entropy bound H(X).
+
+At the same time, rANS avoids the bit-level serialization bottleneck of traditional arithmetic coding by performing state transitions and renormalization directly on native machine words (bytes), achieving orders of magnitude faster throughput.
+
+This pipeline operates on raw UTF-8 text bytes without lossy preprocessing, preserving full Unicode fidelity:
+Mathematical notation: sum_{i=1}^n P(x_i) log_2 (1 / P(x_i)) <= L(C) < H(X) + 1
+Multilingual test: "L'entropie d'une source d'information caractérise son contenu informationnel."
+Non-ASCII characters: Übergrößenträger, déjà-vu, こんにちは, 🚀, 📡, 🔬.
+Information Theory and Coding Research Project:
+End-to-End Evaluation of rANS Source Coding and Polar Channel Coding for Reliable Text Transmission over a No-Packet-Loss Wired Channel Model.
+
+Range Asymmetric Numeral Systems (rANS) represents a state-of-the-art breakthrough in entropy coding.
+Unlike Huffman coding, which is constrained to assign an integer number of bits to each symbol, rANS operates on continuous frequency intervals, achieving compression rates virtually indistinguishable from the theoretical Shannon entropy bound H(X).
+
+At the same time, rANS avoids the bit-level serialization bottleneck of traditional arithmetic coding by performing state transitions and renormalization directly on native machine words (bytes), achieving orders of magnitude faster throughput.
+
+This pipeline operates on raw UTF-8 text bytes without lossy preprocessing, preserving full Unicode fidelity:
+Mathematical notation: sum_{i=1}^n P(x_i) log_2 (1 / P(x_i)) <= L(C) < H(X) + 1
+Multilingual test: "L'entropie d'une source d'information caractérise son contenu informationnel."
+Non-ASCII characters: Übergrößenträger, déjà-vu, こんにちは, 🚀, 📡, 🔬.
+Information Theory and Coding Research Project:
+End-to-End Evaluation of rANS Source Coding and Polar Channel Coding for Reliable Text Transmission over a No-Packet-Loss Wired Channel Model.
+
+Range Asymmetric Numeral Systems (rANS) represents a state-of-the-art breakthrough in entropy coding.
+Unlike Huffman coding, which is constrained to assign an integer number of bits to each symbol, rANS operates on continuous frequency intervals, achieving compression rates virtually indistinguishable from the theoretical Shannon entropy bound H(X).
+
+At the same time, rANS avoids the bit-level serialization bottleneck of traditional arithmetic coding by performing state transitions and renormalization directly on native machine words (bytes), achieving orders of magnitude faster throughput.
+
+This pipeline operates on raw UTF-8 text bytes without lossy preprocessing, preserving full Unicode fidelity:
+Mathematical notation: sum_{i=1}^n P(x_i) log_2 (1 / P(x_i)) <= L(C) < H(X) + 1
+Multilingual test: "L'entropie d'une source d'information caractérise son contenu informationnel."
+Non-ASCII characters: Übergrößenträger, déjà-vu, こんにちは, 🚀, 📡, 🔬.
