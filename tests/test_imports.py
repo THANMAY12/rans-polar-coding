@@ -24,6 +24,9 @@ def test_internal_module_imports():
     assert hasattr(src.channel_coding, "PolarConfig")
     assert hasattr(src.channel_coding, "bits_to_llr")
     assert hasattr(src.channel_coding, "llr_to_hard_bits")
+    assert hasattr(src.channel, "BinarySymmetricChannel")
+    assert hasattr(src.channel, "WiredChannel")
+    assert hasattr(src.channel, "ChannelResult")
 
 
 def test_external_dependency_imports():
