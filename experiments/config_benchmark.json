@@ -1,0 +1,30 @@
+{
+  "name": "comprehensive_sweep",
+  "input_files": [
+    "data/raw/natural_language_sample.txt",
+    "data/raw/technical_text_sample.txt",
+    "data/raw/python_code_sample.txt"
+  ],
+  "polar_configs": [
+    [64, 32],
+    [128, 64],
+    [256, 128],
+    [128, 32],
+    [128, 96]
+  ],
+  "channel_probabilities": [
+    0.0,
+    0.001,
+    0.005,
+    0.01,
+    0.02,
+    0.05,
+    0.10
+  ],
+  "trials_per_condition": 5,
+  "master_seed": 20261020,
+  "scale_bits": 14,
+  "design_snr_db": 2.0,
+  "systematic": false,
+  "output_dir": "results"
+}
