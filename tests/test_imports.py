@@ -20,6 +20,10 @@ def test_internal_module_imports():
     assert hasattr(src.source_coding, "RansDecoder")
     assert hasattr(src.source_coding, "rans_compress")
     assert hasattr(src.source_coding, "rans_decompress")
+    assert hasattr(src.channel_coding, "PolarCodec")
+    assert hasattr(src.channel_coding, "PolarConfig")
+    assert hasattr(src.channel_coding, "bits_to_llr")
+    assert hasattr(src.channel_coding, "llr_to_hard_bits")
 
 
 def test_external_dependency_imports():
