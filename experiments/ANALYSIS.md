@@ -77,9 +77,20 @@ Information bits ($K$) are assigned to the $K$ channels with the lowest Bhattach
 The end-to-end effective transmission rate $R_{\text{eff}}$ relates the user's uncompressed source bits to the total channel uses:
 $$R_{\text{eff}} = \frac{8 \times \text{original\_size\_bytes}}{\text{total\_transmitted\_channel\_bits}} = \frac{8 \times \text{original\_bytes}}{N_{\text{blocks}} \times N}$$
 Since $N_{\text{blocks}} \approx (8 \times \text{container\_bytes}) / K$:
+### 3.4 Joint Effective Transmission Rate and Normalized Information Rate
+The operational effective transmission rate $R_{\text{eff}}$ relates the user's uncompressed source bits to the total channel uses:
+$$R_{\text{eff}} = \frac{8 \times \text{original\_size\_bytes}}{\text{total\_transmitted\_channel\_bits}} = \frac{8 \times \text{original\_bytes}}{N_{\text{blocks}} \times N} \quad [\text{source bits / channel use}]$$
+Since $N_{\text{blocks}} \approx (8 \times \text{container\_bytes}) / K$:
 $$R_{\text{eff}} \approx \left(\frac{\text{original\_bytes}}{\text{container\_bytes}}\right) \times \left(\frac{K}{N}\right) = \text{CR} \times R_{\text{polar}}$$
-**Implication:** When source compression is achieved ($\text{CR} > 1$), the effective user information rate per channel use can exceed the Polar code rate $R_{\text{polar}}$. However, for reliable transmission without channel errors, the net transmission rate remains fundamentally bounded by Shannon capacity:
-$$R_{\text{eff}} \le C(p)$$
+
+**Dimensional & Information-Theoretic Normalization:**
+Raw source text bits contain structural redundancy ($H_0(X) < 8.0$). Consequently, transmitting 1 raw source bit conveys only $H_0(X) / 8.0$ bits of true Shannon entropy. The **true information transmission rate** (entropy rate per channel use) is defined as:
+$$R_{\text{info}} = R_{\text{eff}} \times \frac{H_0(X)}{8.0} = \frac{H_0(X) \times \text{original\_bytes}}{\text{total\_transmitted\_channel\_bits}} \quad [\text{entropy bits / channel use}]$$
+Because lossless source coding is bounded by entropy ($\text{CR} \le 8.0 / H_0(X)$), we have:
+$$R_{\text{info}} \approx \left(\frac{8.0}{H_0(X)} \times R_{\text{polar}}\right) \times \frac{H_0(X)}{8.0} = R_{\text{polar}} = \frac{K}{N}$$
+Shannon's Noisy-Channel Coding Theorem establishes that error-free communication is possible if and only if the true information rate does not exceed channel capacity:
+$$R_{\text{info}} \le C(p) = 1 - H_2(p)$$
+Comparing raw $R_{\text{eff}}$ (which can exceed $1.0$ due to compression) directly against $C(p)$ (which is strictly in $[0, 1]$) represents an apples-to-oranges dimensional mismatch. True information rate $R_{\text{info}}$ operates strictly below $C(p)$.
 
 ### 3.5 Statistical Confidence: Wilson Score Interval
 For $k$ successful exact reconstructions out of $n$ independent trials, the sample proportion is $\hat{p} = k/n$. The two-sided 95% Wilson score confidence interval is given by:
@@ -103,22 +114,28 @@ The automated benchmark sweep executed across the following parameter grid:
   - Rate $R = 0.25$: $(128, 32)$
   - Rate $R = 0.75$: $(128, 96)$
 - **BSC Crossover Probabilities ($P=7$):** $p \in \{0.000, 0.001, 0.005, 0.010, 0.020, 0.050, 0.100\}$
-- **Trials Per Condition ($T=5$):** Total trials = $3 \times 5 \times 7 \times 5 = 525$ trials.
+- **Trials Per Condition ($T=5$):** Total conditions = $3 \times 5 \times 7 = 105$. Total trials = $105 \times 5 = 525$ trials.
 - **Deterministic Master Seed:** `20261020` with per-trial seed derivation:
   $$\text{trial\_seed} = (\text{master\_seed} + \text{condition\_idx} \times 100007 + \text{trial\_idx} \times 997) \pmod{2^{31}-1}$$
 - **Recorded Telemetry:** All 31 trial fields including exact reconstruction, bit flips, empirical channel BER, residual information bit errors, residual BER, Polar block error count, block FER, failure stage, and millisecond timing for each pipeline stage.
+
+### Statistical Hierarchy of Sample Counts
+- **Individual Condition Cell ($n=5$):** 5 trials per unique tuple (corpus, $N$, $K$, $p$). When $k=5/5$ succeed, $CI_{95\%} = [0.5655, 1.0000]$.
+- **Polar Configuration at Baseline $p=0.0$ ($n=15$):** Aggregating across the 3 corpora for a given Polar block configuration yields 15 trials. When $k=15/15$ succeed, $CI_{95\%} = [0.7961, 1.0000]$.
+- **All Noiseless Baseline Trials ($n=75$):** Aggregating across all 15 noiseless conditions ($3 \text{ corpora} \times 5 \text{ configs}$) yields 75 trials. Exactly $75/75$ succeeded ($100\%$, $CI_{95\%} = [0.9513, 1.0000]$).
+- **Grand Dataset ($n=525$):** Across all 105 conditions, $344$ trials succeeded and $181$ failed ($65.52\%$, $CI_{95\%} = [0.6136, 0.6946]$).
 
 ---
 
 ## 5. Empirical Results & Findings
 
 ### 5.1 Channel Reliability & Correction Limits (Figure 1)
-- **Noiseless Baseline ($p=0.0$):** Every trial ($100\%$) across all corpora and Polar configurations achieved exact byte-for-byte reconstruction with zero bit errors, verifying the baseline mathematical correctness of the integrated pipeline.
+- **Noiseless Baseline ($p=0.0$):** Exactly $75$ out of $75$ trials across all corpora and Polar configurations achieved exact byte-for-byte reconstruction with zero bit errors, verifying the baseline mathematical correctness of the integrated pipeline ($100\%$ success, 95% Wilson CI: $[0.9513, 1.0000]$).
 - **Low Noise Regime ($p \le 0.005$):**
-  - For $N=128, K=64$ and $N=256, K=128$, exact reconstruction rates remained high (80–100%).
+  - For $N=128, K=64$ and $N=256, K=128$, exact reconstruction rates remained at $100\%$ ($15/15$ trials each).
   - At $p=0.001$, residual BER remained 0 across all tested trials.
-- **Block Length $N$ Scaling:** Longer block lengths ($N=256$) consistently outperformed shorter block lengths ($N=64$) at equivalent code rates ($R=0.50$). This is directly predicted by Polar coding theory: channel polarization requires sufficient block depth $n = \log_2 N$ to drive synthetic bit channels toward extreme noiseless/noisy states.
-- **Code Rate Sensitivity:** Low-rate Polar codes ($(128, 32)$, $R=0.25$) demonstrated superior error tolerance, maintaining higher reconstruction rates at elevated noise levels ($p=0.01$). Conversely, high-rate Polar codes ($(128, 96)$, $R=0.75$) suffered rapid degradation when $p > 0.005$, as the information rate approached finite-block capacity limits.
+- **Block Length $N$ Scaling:** Longer block lengths ($N=256$) consistently outperformed shorter block lengths ($N=64$) at equivalent code rates ($R=0.50$). At $p = 0.020$, $N=64$ dropped to $46.7\%$ success, whereas $N=128$ achieved $73.3\%$ and $N=256$ achieved $80.0\%$ success. This is directly predicted by Polar coding theory: channel polarization requires sufficient block depth $n = \log_2 N$ to drive synthetic bit channels toward extreme noiseless/noisy states.
+- **Code Rate Sensitivity:** Low-rate Polar codes ($(128, 32)$, $R=0.25$) demonstrated superior error tolerance, maintaining $100\%$ reconstruction up to $p=0.050$. Conversely, high-rate Polar codes ($(128, 96)$, $R=0.75$) suffered rapid degradation when $p > 0.005$, dropping to $0\%$ reconstruction at $p \ge 0.010$, as the code rate approached finite-block capacity limits.
 
 ### 5.2 Physical Channel Verification (Figure 2)
 - Empirical pre-FEC channel BER closely traces the theoretical identity line $y = p$ across all crossover probabilities:
@@ -127,16 +144,15 @@ The automated benchmark sweep executed across the following parameter grid:
   - At $p = 0.050$, mean measured BER $\approx 0.05012 \pm 0.00088$.
 - Confirms that the physical channel simulation is unbiased, strictly length-preserving, and introduces independent bit flips without loss of framing.
 
-### 5.3 Error Hierarchy: Residual BER vs. Frame Error Rate (Figure 3)
+### 5.3 Error Hierarchy & Corruption Detection (Figure 3)
 - **Mathematical Distinction:** Polar Block FER is strictly greater than or equal to Post-FEC Residual BER ($\text{FER} \ge \text{BER}_{\text{res}}$). A single residual bit error in a $K$-bit block corrupts the entire block (yielding a block error of 1.0), whereas the residual bit error rate divides the error count by the total information bits.
 - **Avalanche Effect in rANS:** Compressed bitstreams generated by rANS possess high entropy with virtually zero structural redundancy. Consequently, even a single residual bit flip ($1$ bit error out of $6,000$ container bits, $\text{BER}_{\text{res}} \approx 0.00016$) causes catastrophic state desynchronization in rANS arithmetic decoding.
-- **Error Containment:** In 100% of cases where residual channel errors were present, the rANS container validation layer caught the corruption during header verification or symbol frequency state validation, assigning `failure_stage = "RANS_DECOMPRESS"`. Zero silent corruption events occurred.
+- **Observed Corruption Detection vs. Guaranteed Integrity Check:** In all $181$ failed trials, the rANS decoder raised an exception during container parsing (magic byte check, version mismatch, or invalid frequency table) or state bounds validation, resulting in `failure_stage = "RANS_DECOMPRESS"`. Zero silent corruption events occurred in our dataset. However, **this observed containment is an empirical consequence of parser validations and arithmetic state desynchronization, not a cryptographic CRC-32 integrity guarantee**. Without an explicit CRC, undetected residual bit errors could theoretically pass decompression.
 
 ### 5.4 Effective Rate vs. Shannon Capacity (Figure 4)
-- **Compression Gain:** For natural language prose with $\text{CR} = 1.531$ and Polar code rate $R = 0.50$, the effective transmission rate is:
-  $$R_{\text{eff}} \approx 1.531 \times 0.50 = 0.765 \text{ source bits/channel bit}$$
-- At $p = 0.01$, the theoretical BSC capacity is $C(0.01) \approx 0.919$. The system operates at $R_{\text{eff}} = 0.765$, which is safely below channel capacity ($R_{\text{eff}} < C(p)$), permitting reliable transmission.
-- For high-rate coding ($R = 0.75$), $R_{\text{eff}}$ reaches $1.15$ source bits per channel use on compressible text. While $R_{\text{eff}} > 1$ is possible because source bits are redundant, reliable transmission at $p \ge 0.02$ fails because the raw channel code rate exceeds the cutoff rate for short block lengths.
+- **Operational Effective Rate:** For natural language prose with $\text{CR} = 1.531$ and Polar code rate $R = 0.50$, the operational transmission rate is $R_{\text{eff}} \approx 1.531 \times 0.50 = 0.765$ raw source bits per channel use.
+- **Entropy-Normalized Rate:** When normalized by empirical source entropy ($H_0 = 4.26$ b/B), the true information rate is $R_{\text{info}} = 0.765 \times (4.26 / 8.0) = 0.407$ entropy bits per channel use.
+- **Channel Capacity Boundary:** At $p = 0.010$, the theoretical BSC capacity is $C(0.010) \approx 0.919$. The system operates at $R_{\text{info}} = 0.407 \ll C(p)$, permitting reliable transmission. At $p = 0.100$ and $R = 0.75$, $R_{\text{info}} \approx 0.586$ exceeds capacity $C(0.100) \approx 0.531$, resulting in $100\%$ transmission failure as predicted by Shannon's theorem.
 
 ### 5.5 Computational Latency Profile (Figure 6)
 - **Successive Cancellation Decoding (SCD) Dominance:** Polar SCD decoding accounts for **85–92%** of total pipeline execution time. Pure Python SCD tree traversal incurs $O(N \log N)$ operations per block.
